@@ -1,6 +1,6 @@
 package com.example.weatherapplication.service;
 
-import com.example.weatherapplication.WeatherRequestHistoryRepository;
+import com.example.weatherapplication.repository.WeatherRequestHistoryRepository;
 import com.example.weatherapplication.dto.WeatherResponse;
 import com.example.weatherapplication.entity.WeatherRequestHistory;
 import lombok.RequiredArgsConstructor;

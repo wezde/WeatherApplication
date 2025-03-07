@@ -1,4 +1,4 @@
-package com.example.weatherapplication;
+package com.example.weatherapplication.repository;
 
 import com.example.weatherapplication.entity.WeatherRequestHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
