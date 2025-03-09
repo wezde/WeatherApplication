@@ -20,4 +20,12 @@ public class WeatherResponse {
         private String description;
         private String icon;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Город: %s\nТемпература: %.1f°C\nОщущается как: %.1f°C\nПогода: %s",
+                name, main.getTemp(), main.getFeels_like(), weather[0].getDescription()
+        );
+    }
 }

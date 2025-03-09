@@ -26,15 +26,13 @@ public class WeatherService {
                 apiUrl, latitude, longitude, apiKey);
         WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
 
-        if (response != null) {
-            WeatherRequestHistory history = new WeatherRequestHistory(
-                    latitude,
-                    longitude,
-                    response.getMain().getTemp(),
-                    response.getWeather()[0].getDescription(),
-                    response.getName());
-            repository.save(history);
-        }
+        WeatherRequestHistory history = new WeatherRequestHistory(
+                latitude,
+                longitude,
+                response.getMain().getTemp(),
+                response.getWeather()[0].getDescription(),
+                response.getName());
+        repository.save(history);
         return response;
     }
 }
