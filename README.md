@@ -52,3 +52,9 @@
 
 4. Соберите и запустите контейнеры:
    docker-compose up --build
+
+5. Если получаете ошибку:
+   Ошибка failed to resolve source metadata for docker.io/library/openjdk:17-jdk-alpine:
+   no match for platform in manifest указывает на то, 
+   что Docker не может найти образ openjdk:17-jdk-alpine 
+   Измените образ java в Dockerfile на вот этот (eclipse-temurin:17-jdk-jammy)
