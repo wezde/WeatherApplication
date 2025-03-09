@@ -6,21 +6,42 @@ services:
       - "8080:8080"
     depends_on:
       - db
+      - mongodb
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/weather_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/weather_db
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+      OPENWEATHER_API_URL: ${OPENWEATHER_API_URL}
+    networks:
+      - weather-network
 
   db:
     image: postgres:13
     environment:
       POSTGRES_DB: weather_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - weather-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - weather-network
 
 volumes:
   postgres_data:
+  mongodb_data:
+
+networks:
+  weather-network:
